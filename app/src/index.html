@@ -220,7 +220,7 @@ fetch('data.json')
   });
 
   data.wthbike.forEach(item => {
-      var marker = L.marker([item.wth_bike_lat, item.wth_bike_lon], {icon: wthbike_icon});
+      var marker = L.marker([item.wth_bike_lat, item.wth_bike_lon], {icon: wthbike});
       marker.bindPopup(item.wth_bike_name + '<br>' + item.wth_bike_standDesc);
       markerCluster.addLayer(marker);
   });
@@ -236,6 +236,5 @@ const mtLayer = L.maptilerLayer({
 }).addTo(map);
 </script>
 </body>
-sadasdasdsd
 
 </html>
