@@ -1,26 +1,19 @@
-<img style="align:center;" src="website/img/scootlink-logo.svg" alt="ScootLink" width="320" height="110">
+## ScootLink
 
-<h4 align="center">Krátky popis vášho projektu</h4>
+Vitajte v našom projekte ScootLink, ktorý zjednocuje skoro všetky kolobežky a bicykle v Bratislave! Naša aplikácia je všestranný nástroj, ktorý vám pomôže získať informácie o dostupných dopravných prostriedkoch na jednom mieste. Sledujte aktuálne správy o kolobezkách a bicykloch, a uľahčite si cestovanie po meste.
 
-<p align="center">
-  <a href="#key-features">Kľúčové funkcie</a> •
-  <a href="#getting-started">Začíname</a> •
-  <a href="#contributing">Prispievanie</a> •
-  <a href="#license">Licencia</a>
-</p>
+## Features
 
-![screenshot](https://yourdomain.com/your-screenshot.png)
+- **Jednoduché vyhľadávanie:** ScootLink vám umožňuje rýchlo vyhľadať dostupné kolobežky a bicykle v reálnom čase. Už nebudete musieť zisťovať, kde sa nachádzajú.
 
-## Kľúčové funkcie
-- **Funkcia 1:** Popis prvej kľúčovej funkcie.
-- **Funkcia 2:** Popis druhej kľúčovej funkcie.
-- **Funkcia 3:** Popis tretej kľúčovej funkcie.
+## How to use?
 
-## Začíname
-Poskytnite pokyny, ako začať s vaším projektom. Môže to zahŕňať inštaláciu, konfiguráciu a pokyny na použitie.
+Naša aplikacia je PWA takže si ju netreba sťahovať! Jednoducho si otvorte <a href="">ScootLink</a>
 
-## Prispievanie
-Ak máte nápady na zlepšenie projektu, neváhajte otvoriť nový "Issue" alebo poslať "Pull Request." Vítame príspevky od komunity.
+## Contributing
+
+Chceme, aby ScootLink bol čo najlepší. Ak máte nápady na vylepšenie aplikácie, neváhajte nám napísať. Radi privítame vaše nápady a spoluprácu.
 
 ## Licencia
-Tento projekt je licencovaný pod [Názov licencie](LICENSE) - pozrite si súbor [LICENSE](LICENSE) pre podrobnosti.
+
+ScootLink je licencovaný pod [GPL]. Pre viac informácií si pozrite súbor [LICENSE](LICENSE).
