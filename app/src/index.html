@@ -22,20 +22,37 @@
     }
     .cluster-small {
       background-color: black;
+      justify-content: center;
       color: white;
+      border: 1px solid black;
+      border-radius: 50px;
       text-align: center;
+      align-items: center;
       line-height: 40px;
+      margin: auto;
     }
     .cluster-medium {
       background-color: black;
       color: white;
+      border: 1px solid black;
+      border-radius: 50px;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      border-radius: 0px;
       line-height: 40px;
+      margin: auto;
     }
     .cluster-large {
       background-color: black;
+      align-items: center;
+      border: 1px solid black;
+      margin: auto;
+      border-radius: 50px;
       color: white;
+      justify-content: center;
       text-align: center;
+      border-radius: 0px;
       line-height: 40px;
       margin: auto;
     }
@@ -98,11 +115,8 @@
       margin: auto;
     }
     .popup {
-      background-color: #121212;
-      z-index: 4;
-      position: absolute;
-      display: flex;
-      visibility: hidden;
+      position: fixed;
+      color: #121212;
     }
   </style>
 </head>
@@ -111,129 +125,215 @@
   <div id="map"></div>
   <header>
     <div class="search"><img class="search-ico" src="./img/search-ico.svg"><input class="search-input"
-        placeholder="Enter address..." type=text></div>
-        <div onclick="centerPos()" class="center-pos" id="center-position"><img class="center-ico" src="./img/location-ico.svg"></div>
+        placeholder="Enter address..." type="text"></div>
+    <div onclick="centerPos()" class="center-pos" id="center-position"><img class="center-ico" src="./img/location-ico.svg"></div>
   </header>
-  <div id="popupSlvnft" class="popup">tesssst</div>
   <script>
     const options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0,
-};
-
-var slvnfbike_icon = L.icon({
-  iconUrl: 'img/slvnfbike_icon.svg',
-
-  iconSize:     [38, 95],
-  iconAnchor:   [22, 94],
-  popupAnchor:  [-3, -76]
-});
-
-var tier_icon = L.icon({
-  iconUrl: 'img/tier_icon.svg',
-
-  iconSize:     [38, 95],
-  iconAnchor:   [22, 94],
-  popupAnchor:  [-3, -76]
-});
-
-var wthbike = L.icon({
-  iconUrl: 'img/wthbike_icon.svg',
-
-  iconSize:     [38, 95],
-  iconAnchor:   [22, 94],
-  popupAnchor:  [-3, -76]
-});
-
-
-const key = 'StKMKumjw88Rrn5bxcP5';
-const map = L.map('map',  {maxZoom: 30, minZoom: 10, zoomControl: false}).setView([48.1486, 17.1077], 15);
-var elem_slvnft = document.getElementById('popupSlvnft');
-
-const circle = L.circleMarker([48.1486, 17.1077], {
-  radius: 10,
-  color: '#AFAFFF',
-  fill: true,
-  fillColor: '#6262FF',
-  fillOpacity: 0.8
-}).addTo(map);
-
-const markerCluster = L.markerClusterGroup({
-  iconCreateFunction: function(cluster) {
-    const childCount = cluster.getChildCount();
-    const options = {
-      iconSize: [35, 35],
-      iconAnchor: [15, 15],
-      className: 'marker-cluster',
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
     };
 
-    if (childCount < 10) {
-      options.html = '<div class="cluster-small">' + childCount + '</div>';
-    } else if (childCount < 100) {
-      options.html = '<div class="cluster-medium">' + childCount + '</div>';
-    } else {
-      options.html = '<div class="cluster-large">' + childCount + '</div>';
-    }
-
-    return L.divIcon(options);
-  }
-})
-map.addLayer(markerCluster);
-
-function showPosition(position) {
-  const latitude = position.coords.latitude;
-  const longitude = position.coords.longitude;
-
-  circle.setLatLng([latitude, longitude]);
-
-  map.setView([latitude, longitude], 15);
-}
-
-function error(err) {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-}
-
-function centerPos() {
-navigator.geolocation.getCurrentPosition(showPosition, error,
-options);
-}
-fetch('data.json')
-.then(response => response.json())
-.then(data => {
-   data.slvnft.forEach(item => {
-    var marker = L.marker([item.slvnft_bike_lat, item.slvnft_bike_lon], {icon: slvnfbike_icon});
-    marker.bindPopup(item.slvnft_bike_station_name + '<br>Na stanici: ' + item.slvnft_bike_on_station);
-
-    marker.on('click', function(e) {
-      elem_slvnft.style.visibility = 'visible';
+    var slvnfbike_icon = L.icon({
+      iconUrl: 'img/slvnfbike_icon.svg',
+      iconSize: [38, 95],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76]
     });
 
-    markerCluster.addLayer(marker);
-  });
+    var tier_icon = L.icon({
+      iconUrl: 'img/tier_icon.svg',
+      iconSize: [38, 95],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76]
+    });
 
-  data.tier.forEach(item => {
-      var marker = L.marker([item.tier_lat, item.tier_lon], {icon: tier_icon});
-      marker.bindPopup('Tier ID: ' + item.tier_id);
-      markerCluster.addLayer(marker);
-  });
+    var wthbike = L.icon({
+      iconUrl: 'img/wthbike_icon.svg',
+      iconSize: [38, 95],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76]
+    });
 
-  data.wthbike.forEach(item => {
-      var marker = L.marker([item.wth_bike_lat, item.wth_bike_lon], {icon: wthbike});
-      marker.bindPopup(item.wth_bike_name + '<br>' + item.wth_bike_standDesc);
-      markerCluster.addLayer(marker);
-  });
+    const key = 'StKMKumjw88Rrn5bxcP5';
+    const map = L.map('map', {
+      maxZoom: 30,
+      minZoom: 10,
+      zoomControl: false
+    }).setView([48.1486, 17.1077], 15);
+    var elem_slvnft = document.getElementById('popupSlvnft');
 
-})
-.catch(error => console.error('ERROR: ', error));
+    const circle = L.circleMarker([48.1486, 17.1077], {
+      radius: 10,
+      color: '#AFAFFF',
+      fill: true,
+      fillColor: '#6262FF',
+      fillOpacity: 0.8
+    }).addTo(map);
 
-navigator.geolocation.watchPosition(centerPos, error, options);
+    const slvnftClusterGroup = L.markerClusterGroup({
+      iconCreateFunction: function (cluster) {
+        const childCount = cluster.getChildCount();
+        const options = {
+          iconSize: [35, 35],
+          iconAnchor: [15, 15],
+          className: 'marker-cluster-slvnft',
+        };
 
-const mtLayer = L.maptilerLayer({
-  apiKey: key,
-  style: "49e7607b-afc7-4903-9f03-ad2f06412a1f",
-}).addTo(map);
-</script>
+        if (childCount < 1) {
+          options.html = '<div class="cluster-small">' + childCount + '</div>';
+        } else if (childCount < 100) {
+          options.html = '<div class="cluster-medium">' + childCount + '</div>';
+        } else {
+          options.html = '<div class="cluster-large">' + childCount + '</div>';
+        }
+
+        return L.divIcon(options);
+      }
+    });
+
+    const tierClusterGroup = L.markerClusterGroup({
+      iconCreateFunction: function (cluster) {
+        const childCount = cluster.getChildCount();
+        const options = {
+          iconSize: [35, 35],
+          iconAnchor: [15, 15],
+          className: 'marker-cluster-tier',
+        };
+
+        if (childCount < 1) {
+          options.html = '<div class="cluster-small">' + childCount + '</div>';
+        } else if (childCount < 100) {
+          options.html = '<div class="cluster-medium">' + childCount + '</div>';
+        } else {
+          options.html = '<div class="cluster-large">' + childCount + '</div>';
+        }
+
+        return L.divIcon(options);
+      }
+    });
+
+    const wthbikeClusterGroup = L.markerClusterGroup({
+      iconCreateFunction: function (cluster) {
+        const childCount = cluster.getChildCount();
+        const options = {
+          iconSize: [35, 35],
+          iconAnchor: [15, 15],
+          className: 'marker-cluster-wthbike',
+        };
+
+        if (childCount < 1) {
+          options.html = '<div class="cluster-small">' + childCount + '</div>';
+        } else if (childCount < 100) {
+          options.html = '<div class="cluster-medium">' + childCount + '</div>';
+        } else {
+          options.html = '<div class="cluster-large">' + childCount + '</div>';
+        }
+
+        return L.divIcon(options);
+      }
+    });
+
+    map.addLayer(slvnftClusterGroup);
+    map.addLayer(tierClusterGroup);
+    map.addLayer(wthbikeClusterGroup);
+
+    function showPosition(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      circle.setLatLng([latitude, longitude]);
+
+      map.setView([latitude, longitude], 15);
+    }
+
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+    const searchInput = document.querySelector('.search-input');
+    const searchIcon = document.querySelector('.search-ico');
+    
+    searchIcon.addEventListener('click', function () {
+      performSearch();
+    });
+    
+    searchInput.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+    
+    function performSearch() {
+      const address = searchInput.value;
+      const url = `https://nominatim.openstreetmap.org/search?format=json&q=${address}`;
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.length > 0) {
+            const coordinates = [parseFloat(data[0].lat), parseFloat(data[0].lon)];
+            map.setView(coordinates, 15);
+          } else {
+            alert('Adresa nebola nájdená.');
+          }
+        })
+        .catch(error => {
+          console.error('Chyba pri geokódovaní: ' + error);
+        });
+    }
+    
+
+    function centerPos() {
+        navigator.geolocation.getCurrentPosition(showPosition, error, options);
+        }
+    document.getElementById('center-position').addEventListener('click', centerPos);
+
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        data.slvnft.forEach(item => {
+          var marker = L.marker([item.slvnft_bike_lat, item.slvnft_bike_lon], {
+            icon: slvnfbike_icon
+          });
+          marker.bindPopup(item.slvnft_bike_station_name + '<br>🚲 On station: ' + item.slvnft_bike_on_station, {
+          className: 'popup'
+          });
+
+          slvnftClusterGroup.addLayer(marker);
+        });
+
+        data.tier.forEach(item => {
+          var marker = L.marker([item.tier_lat, item.tier_lon], {
+            icon: tier_icon
+          });
+          marker.bindPopup('📡 Tier Scooter ID: ' + item.tier_id + '<br>🔋Battery Level:' + item.tier_battery_status + '%');
+
+          tierClusterGroup.addLayer(marker);
+        });
+
+        data.wthbike.forEach(item => {
+          var marker = L.marker([item.wth_bike_lat, item.wth_bike_lon], {
+            icon: wthbike
+          });
+          const href = 'href="' + item.wth_bike_photo + '"'
+          const target = ' target="_blank"'
+          marker.bindPopup(item.wth_bike_name + '<br>' + item.wth_bike_standDesc
+          + '<br>🚲 On station:' + item.wth_bike_onstation + "<br><a " + href + target + ">Image</a>");
+
+          wthbikeClusterGroup.addLayer(marker);
+        });
+
+      })
+      .catch(error => console.error('ERROR: ', error));
+
+    navigator.geolocation.watchPosition(centerPos, error, options);
+
+    const mtLayer = L.maptilerLayer({
+      apiKey: key,
+      style: "49e7607b-afc7-4903-9f03-ad2f06412a1f",
+    }).addTo(map);
+
+  </script>
 </body>
 
 </html>
