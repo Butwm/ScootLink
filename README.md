@@ -1,6 +1,4 @@
-<h1 align="center">
-  <img src="website/img/scootlink-logo.svg" alt="ScootLink" width="320" height="110">
-</h1>
+<img align="center" src="website/img/scootlink-logo.svg" alt="ScootLink" width="320" height="110">
 
 <h4 align="center">Krátky popis vášho projektu</h4>
 
