@@ -21,43 +21,45 @@
       background-color: #121212;
     }
     .cluster-small {
-      background-color: black;
+      background-color: rgb(49, 49, 49);
       justify-content: center;
       color: white;
-      border: 1px solid black;
+      border: 1px solid rgb(49, 49, 49);
       border-radius: 50px;
       text-align: center;
       align-items: center;
+      width: 40px;
       line-height: 40px;
       margin: auto;
     }
     .cluster-medium {
-      background-color: black;
+      background-color: rgb(49, 49, 49);
       color: white;
-      border: 1px solid black;
+      border: 1px solid rgb(49, 49, 49);
       border-radius: 50px;
       align-items: center;
       justify-content: center;
       text-align: center;
-      border-radius: 0px;
+      width: 40px;
       line-height: 40px;
       margin: auto;
     }
     .cluster-large {
-      background-color: black;
+      background-color: rgb(49, 49, 49);
       align-items: center;
-      border: 1px solid black;
+      border: 1px solid rgb(49, 49, 49);
       margin: auto;
       border-radius: 50px;
       color: white;
       justify-content: center;
       text-align: center;
-      border-radius: 0px;
       line-height: 40px;
+      width: 40px;
       margin: auto;
     }
     #map {
       position: absolute;
+      margin: auto;
       top: 0;
       right: 0;
       bottom: 0;
@@ -306,7 +308,7 @@
           var marker = L.marker([item.tier_lat, item.tier_lon], {
             icon: tier_icon
           });
-          marker.bindPopup('📡 Tier Scooter ID: ' + item.tier_id + '<br>🔋Battery Level:' + item.tier_battery_status + '%');
+          marker.bindPopup('📡 Tier Scooter ID: ' + item.tier_id + '<br>🔋Battery Level: ' + item.tier_battery_status + '%');
 
           tierClusterGroup.addLayer(marker);
         });
