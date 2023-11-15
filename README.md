@@ -1,7 +1,6 @@
 ## ScootLink
 
-Vitajte v našom projekte ScootLink, ktorý zjednocuje skoro všetky kolobežky a bicykle v Bratislave! Naša aplikácia je všestranný nástroj, ktorý vám pomôže získať informácie o dostupných dopravných prostriedkoch na jednom mieste. Sledujte aktuálne správy o kolobezkách a bicykloch, a uľahčite si cestovanie po meste.
-
+Vitajte na Githube nášho projektu. ScootLink zjednocuje skoro všetky kolobežky a bicykle v Bratislave!
 ## Features
 
 - **Jednoduché vyhľadávanie:** ScootLink vám umožňuje rýchlo vyhľadať dostupné kolobežky a bicykle v reálnom čase. Už nebudete musieť zisťovať, kde sa nachádzajú.
