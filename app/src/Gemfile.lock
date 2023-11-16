@@ -4,6 +4,7 @@ GEM
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     domain_name (0.6.20231109)
+    ffi (1.16.3)
     ffi (1.16.3-x64-mingw-ucrt)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -23,6 +24,7 @@ GEM
     rake (13.1.0)
 
 PLATFORMS
+  ruby
   x64-mingw-ucrt
 
 DEPENDENCIES
