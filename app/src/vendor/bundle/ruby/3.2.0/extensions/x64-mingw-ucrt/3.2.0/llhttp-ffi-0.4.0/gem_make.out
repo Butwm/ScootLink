@@ -1,8 +1,0 @@
-current directory: C:/Users/alge1/OneDrive/Dokumenty/GitHub/streethub/app/src/vendor/bundle/ruby/3.2.0/gems/llhttp-ffi-0.4.0/ext
-C:/Ruby32-x64/bin/ruby.exe -rrubygems C:/Users/alge1/OneDrive/Dokumenty/GitHub/streethub/app/src/vendor/bundle/ruby/3.2.0/gems/rake-13.1.0/exe/rake RUBYARCHDIR\=C:/Users/alge1/OneDrive/Dokumenty/GitHub/streethub/app/src/vendor/bundle/ruby/3.2.0/extensions/x64-mingw-ucrt/3.2.0/llhttp-ffi-0.4.0 RUBYLIBDIR\=C:/Users/alge1/OneDrive/Dokumenty/GitHub/streethub/app/src/vendor/bundle/ruby/3.2.0/extensions/x64-mingw-ucrt/3.2.0/llhttp-ffi-0.4.0
-gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -fPIC   -o x86_64-windows/llhttp/api.o -c ./llhttp/api.c
-gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -fPIC   -o x86_64-windows/llhttp/http.o -c ./llhttp/http.c
-gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -fPIC   -o x86_64-windows/llhttp/llhttp.o -c ./llhttp/llhttp.c
-gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -fPIC   -o x86_64-windows/llhttp/llhttp_ext.o -c ./llhttp/llhttp_ext.c
-gcc -shared -o x86_64-windows/llhttp-ext.dll x86_64-windows/llhttp/api.o x86_64-windows/llhttp/http.o x86_64-windows/llhttp/llhttp.o x86_64-windows/llhttp/llhttp_ext.o -fexceptions 
-mkdir -p x86_64-windows/llhttp

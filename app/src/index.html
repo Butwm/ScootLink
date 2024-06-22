@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -13,29 +13,51 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
   <style>
+    @media (min-width: 1024px) {
+      #map, header {
+        display: none;
+      }
+      #large-screen-message {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+      
+      }
+    }
+
+    @media (max-width: 1023px) {
+      #large-screen-message {
+        display: none;
+        text-align: center;
+      }
+    }
+
     body {
       justify-content: center;
-      font-family: 'Roboto';
+      font-family: 'Satoshi';
       margin: auto;
       display: flex;
       background-color: #121212;
     }
+
     .cluster-small {
-      background-color: rgb(49, 49, 49);
+      background-color: rgb(255, 255, 255);
       justify-content: center;
-      color: white;
-      border: 1px solid rgb(49, 49, 49);
+      color: black;
+      border: 1px solid rgb(214, 214, 214);
       border-radius: 50px;
       text-align: center;
       align-items: center;
       width: 40px;
       line-height: 40px;
       margin: auto;
+      font-weight: 700;
     }
+
     .cluster-medium {
-      background-color: rgb(49, 49, 49);
-      color: white;
-      border: 1px solid rgb(49, 49, 49);
+      background-color: rgb(255, 255, 255);
+      color: black;
+      border: 2px solid rgb(214, 214, 214);
       border-radius: 50px;
       align-items: center;
       justify-content: center;
@@ -43,20 +65,24 @@
       width: 40px;
       line-height: 40px;
       margin: auto;
+      font-weight: 700;
     }
+
     .cluster-large {
-      background-color: rgb(49, 49, 49);
+      background-color: rgb(255, 255, 255);
       align-items: center;
-      border: 1px solid rgb(49, 49, 49);
+      border: 2px solid rgb(214, 214, 214);
       margin: auto;
       border-radius: 50px;
-      color: white;
+      color: black;
       justify-content: center;
       text-align: center;
       line-height: 40px;
       width: 40px;
       margin: auto;
+      font-weight: 700;
     }
+
     #map {
       position: absolute;
       margin: auto;
@@ -102,6 +128,7 @@
       width: 15px;
       margin-right: 8px;
     }
+
     .center-pos {
       margin-left: 10px;
       padding-left: 10px;
@@ -111,14 +138,24 @@
       border: 2px solid #7F7F7F;
       border-radius: 4px;
     }
+
     .center-ico {
       height: 20px;
       width: 20px;
       margin: auto;
     }
+
     .popup {
       position: fixed;
       color: #121212;
+    }
+
+    #large-screen-message {
+      display: none;
+      text-align: center;
+      color: white;
+      font-size: 24px;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -130,7 +167,30 @@
         placeholder="Enter address..." type="text"></div>
     <div onclick="centerPos()" class="center-pos" id="center-position"><img class="center-ico" src="./img/location-ico.svg"></div>
   </header>
+  <div id="large-screen-message">
+    Please use a phone or tablet to view the map.
+    <a>Back</a>
+  </div>
   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      function checkScreenSize() {
+        if (window.innerWidth > 1024) {
+          document.body.style.display = 'block';
+          document.getElementById('map').style.display = 'none';
+          document.querySelector('header').style.display = 'none';
+          document.getElementById('large-screen-message').style.display = 'block';
+        } else {
+          document.body.style.display = 'flex';
+          document.getElementById('map').style.display = 'block';
+          document.querySelector('header').style.display = 'flex';
+          document.getElementById('large-screen-message').style.display = 'none';
+        }
+      }
+
+      checkScreenSize(); // Initial check
+      window.addEventListener('resize', checkScreenSize); // Check on resize
+    });
+
     const options = {
       enableHighAccuracy: true,
       timeout: 5000,
@@ -332,7 +392,7 @@
 
     const mtLayer = L.maptilerLayer({
       apiKey: key,
-      style: "49e7607b-afc7-4903-9f03-ad2f06412a1f",
+      style: "7bfe37a8-cfb9-4b01-9c18-0e80d96edbb3",
     }).addTo(map);
 
   </script>
